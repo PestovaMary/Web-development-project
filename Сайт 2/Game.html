@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Game</title>
+		<link href = "CSS-.css" rel = "stylesheet">
+		
+		<script language= "JavaScript">
+
+var gamelength=30;
+var timerID=null
+var playing=false;
+var numholes=4*4;
+var currentpos=1;
+function clrholes() {
+for(var k=0;k<document.dmz.elements.length;k++)
+document.dmz.elements[k].checked=false;
+}
+	
+function stoptimer() {
+if(playing)
+clearTimeout(timerID);
+}
+	
+function showtime(remtime) {
+
+document.cpanel.timeleft.value=remtime;
+if(playing) {
+
+if(remtime==0) {
+
+	
+stopgame();
+return;
+}
+else {
+temp=remtime-1;
+timerID=setTimeout("showtime(temp)",1000);
+      }
+   }
+}
+	
+function stopgame() {
+stoptimer();
+playing=false;
+document.cpanel.timeleft.value=0;
+clrholes();
+display("Game over");
+alert('You score:  '+totalhits);
+}
+	
+function play() {
+stoptimer();
+if(playing) {
+stopgame();
+return;
+}
+playing=true;
+clrholes();
+totalhits=0;
+document.cpanel.score.value=totalhits;
+display("Play");
+launch();
+showtime(gamelength);
+}
+	
+function display(msg) {
+document.cpanel.state.value=msg;
+}
+function launch() {
+var launched=false;
+while(!launched) {
+mynum=random(0, 15);
+if(mynum!=currentpos) {
+document.dmz.elements[mynum].checked=true;
+currentpos=mynum;
+launched=true;
+      }
+   }
+}
+	
+	function random(min, max) {
+		var rand = min - 0.5 + Math.random() * (max-min +1)
+		rand = Math.round(rand);
+		return rand;
+	}
+ 
+function hithead(id) {
+if(playing==false) {
+clrholes();
+display("Click start to start");
+return;
+}
+if(currentpos!=id) {
+totalhits+=-1;
+document.cpanel.score.value=totalhits;
+document.dmz.elements[id].checked=false;
+}
+else {
+totalhits+=1;
+document.cpanel.score.value=totalhits;
+launch();
+document.dmz.elements[id].checked=false;
+   }
+}
+ 
+</script>
+		
+	</head>
+	<body>
+		<div class="ramka"> 
+			
+			<div class = "centr">
+				<h1>  <font  color="White"  face="Dark"> Game</font> </h1>
+			</div>
+		</div>
+		<div class="ramka1">
+		<h1>  <font  color="White"  face="Dark"><center>Hit the point</font></center></h1> 
+		<h1>  <font  color="White"  face="Dark"><center>You have 30 seconds</font></center></h1> 
+
+<form name="cpanel">
+<center>
+<table cellspacing=3>
+<tr>
+<td><input type="button" name="startstop" value=" Start the game / Finish the game " onClick="play()"></td>
+<td><pre>    </pre></td>
+<td align=right><font  color="White"  face="Dark">Time:</font></td>
+<td><input type="text" name="timeleft" size="4" onFocus="this.blur()"></td>
+</tr>
+<tr>
+<td><input type="text" name="state" size="20" value="Click start to start" onFocus="this.blur()"></td>
+<td><pre>    </pre></td>
+<td align=right><font  color="White"  face="Dark">Score:</font></td>
+<td><input type="text" name="score" size="4" onFocus="this.blur()"></td>
+</tr>
+</table>
+</center>
+</form>
+<form name="dmz">
+<center>
+<table cellspacing=3>
+<tr>
+<td colspan=10><hr size=1></td>
+</tr>
+<tr>
+<td align="center" valign="center"><input type="radio" onClick="hithead(0)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(1)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(2)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(3)"></td>
+
+</tr>
+<tr>
+<td align="center" valign="center"><input type="radio" onClick="hithead(4)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(5)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(6)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(7)"></td>
+
+</tr>
+<tr>
+<td align="center" valign="center"><input type="radio" onClick="hithead(8)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(9)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(10)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(11)"></td>
+</tr>
+<tr>
+<td align="center" valign="center"><input type="radio" onClick="hithead(12)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(13)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(14)"></td>
+<td align="center" valign="center"><input type="radio" onClick="hithead(15)"></td>
+</tr>
+
+	</table>
+	</center>
+	</form>
+	</div>	
+	</body>
+</html>

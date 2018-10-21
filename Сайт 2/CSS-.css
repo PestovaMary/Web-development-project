@@ -1,0 +1,115 @@
+a 
+{ 
+    text-decoration: none; 
+} 
+
+body
+{
+
+	background-image: url(Images/фон.png);
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: Dark;
+	color: white;
+}
+
+
+	
+.textik 
+{
+	top: 1%;
+	margin-left: 4%;
+	position: relative;
+	color: white;
+	font-size: 3vw;
+}
+	
+.netflix_icon 
+{
+	margin-top: 3%;
+	margin-left: 43%;	
+	position: relative;
+}
+
+.ramka 
+{
+	opacity: 0.9;
+	top: 0%;
+	left: 0%;
+    background:#696969;
+    padding: 1px;
+	position: relative;
+}
+   
+.ramka0 
+{
+	opacity: 0.9;
+    background:#696969;
+    padding: 10px;
+	margin-top: 1%;  
+	padding: 10%;
+	position: static;
+}	
+		
+.ramka1 
+{
+	opacity: 0.9;
+    background:#696969;
+    padding: 6px;
+	margin-top: 3%;  
+	position: static;
+}
+
+.ramka2 
+{
+	display: flex;
+	margin-top: 5%;  
+	position: relative;
+	justify-content: center;
+}
+
+.ramka11
+{
+	align-self: center;
+	opacity: 1;
+}
+	
+.centr
+{
+	text-align: center;
+	font-weight: 900;
+
+}
+
+.gallery img
+{
+	margin:5px; /* внешние отступы картинок */
+	border:3px solid #fff; /* рамка картинок */
+}
+
+.photo:hover
+{
+	border:3px solid #034F80; /* изменение цвета рамки при наведении на картинку */
+}
+
+@font-face
+{
+	font-family: Dark;
+	src: url(resources/11248.ttf);
+}
+#registration
+{
+	display: flex;
+	flex-direction: column;
+	font-size: 24px;
+}
+#registration input{
+	font-size: 24px;
+}
+
+#registration button
+{
+	font-size: 34px;
+	margin-top: 20px;
+	font-family: Dark;
+}
